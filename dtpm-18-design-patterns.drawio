@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net" modified="2026-11-10T02:50:00.000Z" agent="Antigravity" version="24.0.0">
+  <diagram id="DTPM_18_PATTERNS" name="18 Design Patterns Overview">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- SAMPLE CLASS 1: DatabaseConnection (Singleton) -->
+        <mxCell id="cls_singleton" value="DatabaseConnection" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="260" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_singleton_attrs" value="- dbUrl: String&#xa;- username: String&#xa;- executionLogs: List&lt;String&gt;&#xa;- isConnected: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="cls_singleton">
+          <mxGeometry y="26" width="260" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_singleton_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="cls_singleton">
+          <mxGeometry y="100" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_singleton_methods" value="+ getInstance(): DatabaseConnection&#xa;+ executeQuery(sql: String): void&#xa;+ executeUpdate(sql: String): void&#xa;+ disconnect(): void&#xa;+ reconnect(): void&#xa;+ getExecutionLogs(): List&lt;String&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="cls_singleton">
+          <mxGeometry y="108" width="260" height="114" as="geometry" />
+        </mxCell>
+
+        <!-- SAMPLE CLASS 2: SingletonHelper -->
+        <mxCell id="cls_helper" value="SingletonHelper" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="100" y="380" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_helper_attrs" value="- INSTANCE: DatabaseConnection" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="cls_helper">
+          <mxGeometry y="26" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_helper_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="cls_helper">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_helper_methods" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="cls_helper">
+          <mxGeometry y="64" width="260" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- EDGE: Composition (Solid Diamond) -->
+        <mxCell id="edge_singleton" value="contains" style="endArrow=diamond;endFill=1;startArrow=none;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="cls_singleton" target="cls_helper">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ADAPTER PATTERN SAMPLE -->
+        <mxCell id="cls_momo" value="&lt;&lt;interface&gt;&gt;&#xa;MoMoPayable" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="460" y="80" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_momo_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cls_momo">
+          <mxGeometry y="36" width="240" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_momo_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="cls_momo">
+          <mxGeometry y="50" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_momo_methods" value="+ processMoMoPayment(amt: double): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="cls_momo">
+          <mxGeometry y="58" width="240" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- VNPayPayable Interface -->
+        <mxCell id="cls_vnpay" value="&lt;&lt;interface&gt;&gt;&#xa;VNPayPayable" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="780" y="80" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_vnpay_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="cls_vnpay">
+          <mxGeometry y="36" width="250" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_vnpay_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="cls_vnpay">
+          <mxGeometry y="50" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_vnpay_methods" value="+ executeVNPayTransaction(id, amt): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="cls_vnpay">
+          <mxGeometry y="58" width="250" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- VNPayToMoMoAdapter Class -->
+        <mxCell id="cls_adapter" value="VNPayToMoMoAdapter" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="460" y="270" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_adapter_attrs" value="- vnpayService: VNPayPayable" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="cls_adapter">
+          <mxGeometry y="26" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_adapter_line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="cls_adapter">
+          <mxGeometry y="56" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls_adapter_methods" value="+ processMoMoPayment(amt: double): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="cls_adapter">
+          <mxGeometry y="64" width="240" height="46" as="geometry" />
+        </mxCell>
+
+        <!-- Realization: Implements (Dashed hollow triangle) -->
+        <mxCell id="edge_implements" value="Implements" style="endArrow=block;endFill=0;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="cls_adapter" target="cls_momo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Aggregation: Has-a (Hollow Diamond) -->
+        <mxCell id="edge_wraps" value="wraps / adapts" style="endArrow=diamond;endFill=0;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="cls_adapter" target="cls_vnpay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
