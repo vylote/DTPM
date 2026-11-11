@@ -14,6 +14,10 @@ interface FeedbackXMLParser {
     String parseFeedbackXML(String xml);
 }
 
+interface ShippingXMLParser{
+    String parseShippingXML(String xml);
+}
+
 /**
  * Giao diện Abstract Factory: Tạo họ các Parser tương thích theo từng đối tác / chi nhánh.
  */
@@ -21,6 +25,7 @@ interface XMLParserFactory {
     OrderXMLParser createOrderParser();
     FeedbackXMLParser createFeedbackParser();
     String getFactoryRegion();
+    ShippingXMLParser createShippingParser();
 }
 
 /**
@@ -43,6 +48,13 @@ class NYFeedbackXMLParser implements FeedbackXMLParser {
     }
 }
 
+class NYShippingXMLParser implements ShippingXMLParser{
+    @Override
+    public String parseShippingXML(String xml) {
+        return "[NY Shipping Parser] Chuan hoa kieu van chuyen "+xml;
+    }
+}
+
 /**
  * Concrete Factory 1: Xây dựng họ parser cho đối tác New York (NY)
  */
@@ -61,5 +73,11 @@ public class NYXmlParserFactory implements XMLParserFactory {
     public FeedbackXMLParser createFeedbackParser() {
         return new NYFeedbackXMLParser();
     }
+    
+    @Override
+    public ShippingXMLParser createShippingParser() {
+        return new NYShippingXMLParser();
+    }
 }
+
 

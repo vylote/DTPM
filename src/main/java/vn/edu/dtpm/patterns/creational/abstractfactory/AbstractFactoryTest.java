@@ -12,9 +12,11 @@ public class AbstractFactoryTest {
         System.out.println("   Khu vực áp dụng: " + nyFactory.getFactoryRegion());
         OrderXMLParser nyOrderParser = nyFactory.createOrderParser();
         FeedbackXMLParser nyFeedbackParser = nyFactory.createFeedbackParser();
+        ShippingXMLParser nyShippingParser = nyFactory.createShippingParser();
 
         System.out.println("   " + nyOrderParser.parseOrderXML("<NYOrder><id>NY-9021</id><amt>$1200</amt></NYOrder>"));
         System.out.println("   " + nyFeedbackParser.parseFeedbackXML("<NYFeedback><user>JohnDoe</user><rating>5</rating></NYFeedback>"));
+        System.out.println("   " + nyShippingParser.parseShippingXML("<NYShipping>NY-Delivery</NYShipping>"));
 
         // 2. Kiểm thử với nhà máy TW Factory
         System.out.println("\n2. Tích hợp họ Parser cho đối tác Taiwan (TW) / Châu Á:");
@@ -22,9 +24,11 @@ public class AbstractFactoryTest {
         System.out.println("   Khu vực áp dụng: " + twFactory.getFactoryRegion());
         OrderXMLParser twOrderParser = twFactory.createOrderParser();
         FeedbackXMLParser twFeedbackParser = twFactory.createFeedbackParser();
+        ShippingXMLParser twShippingParser = twFactory.createShippingParser();
 
         System.out.println("   " + twOrderParser.parseOrderXML("<TWOrder><id>TW-3011</id><amt>NT$35000</amt></TWOrder>"));
         System.out.println("   " + twFeedbackParser.parseFeedbackXML("<TWFeedback><user>ChenWei</user><rating>5</rating></TWFeedback>"));
+        System.out.println("   " + twShippingParser.parseShippingXML("<TWShipping>TW-Delivery</TWShipping>"));
     }
 }
 

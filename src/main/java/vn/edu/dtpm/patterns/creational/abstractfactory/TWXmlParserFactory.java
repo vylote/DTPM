@@ -20,6 +20,13 @@ class TWFeedbackXMLParser implements FeedbackXMLParser {
     }
 }
 
+class TWShippingXMLParser implements ShippingXMLParser {
+    @Override
+    public String parseShippingXML(String xml) {
+        return "[TW Shipping Parser] Chuẩn hóa vận chuyển quốc tế Đài Loan: " + xml;
+    }
+}
+
 /**
  * Concrete Factory 2: Xây dựng họ parser cho đối tác Taiwan (TW) / Châu Á
  */
@@ -37,6 +44,11 @@ public class TWXmlParserFactory implements XMLParserFactory {
     @Override
     public FeedbackXMLParser createFeedbackParser() {
         return new TWFeedbackXMLParser();
+    }
+    
+    @Override
+    public ShippingXMLParser createShippingParser() {
+        return new TWShippingXMLParser();
     }
 }
 

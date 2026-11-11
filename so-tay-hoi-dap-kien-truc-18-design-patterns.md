@@ -73,4 +73,29 @@
   * Thay vì hard-code `if-else` gọi `new TikiOrderParser()`, lớp cha định nghĩa phương thức trừu tượng `createParser()` và ủy quyền việc tạo đối tượng cụ thể cho các lớp Factory con. Giúp dễ dàng thêm sàn mới (Lazada, TikTok Shop) mà không cần sửa code cũ (tuân thủ Open/Closed Principle - OCP).
 
 ---
+
+#### ❓ Câu 2: Tại sao gọi là "Factory METHOD" mà không phải "Factory Class"?
+* **Đáp:**
+  * Lớp cha giữ quy trình nghiệp vụ chung (`processOrder`), chỉ để trống **DUY NHẤT 1 PHƯƠNG THỨC** trừu tượng (`abstract OrderParser createParser()`).
+  * Lớp con kế thừa chỉ cần override đúng phương thức (`Method`) này để quyết định sản phẩm được tạo. Vì bản chất dựa vào việc ghi đè phương thức thay vì sinh ra 1 class `switch-case` riêng, nên gọi là Factory Method.
+
+---
+
+### 3. ABSTRACT FACTORY PATTERN (`XMLParserFactory.java`)
+* **Bài toán:** Bóc tách đồng thời một họ các định dạng XML cho đối tác quốc tế: Đơn hàng (`Order`), Đánh giá (`Feedback`), Vận chuyển (`Shipping`) theo từng khu vực (New York - Bắc Mỹ vs Taiwan - Châu Á).
+
+---
+
+#### ❓ Câu 1: Abstract Factory khác gì Factory Method?
+* **Factory Method (Mua món lẻ):** Chỉ tạo **1 sản phẩm đơn lẻ** (`OrderParser`).
+* **Abstract Factory (Mua trọn bộ Combo):** Tạo **cả một họ sản phẩm liên quan** (`Order` + `Feedback` + `Shipping`). Đảm bảo tính đồng bộ 100%: đã chọn nhà máy New York thì cả 3 parser đều chuẩn New York, không bị lẫn với Taiwan.
+
+---
+
+#### ❓ Câu 2: Nhược điểm lớn nhất của Abstract Factory là gì?
+* **Khó mở rộng thêm loại sản phẩm mới:**
+  * Mỗi nhà máy con phải tự implement toàn bộ các class sản phẩm trong họ của mình rồi nhét vào factory.
+  * Khi interface gốc `XMLParserFactory` thay đổi (ví dụ thêm `createShippingParser()`), **toàn bộ các factory con (`NYXmlParserFactory`, `TWXmlParserFactory`...) đều bị lỗi biên dịch** và bắt buộc phải viết thêm code (vi phạm Open/Closed Principle khi mở rộng chủng loại sản phẩm).
+
+---
 *(Sẽ tiếp tục bổ sung ngắn gọn cho các pattern tiếp theo...)*

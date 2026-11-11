@@ -1,0 +1,11 @@
+#BlueJ class context
+#Wed Nov 11 09:38:15 ICT 2026
+comment0.target=TWXmlParserFactory
+comment0.text=\n Concrete Factory 2\: X\u00E2y d\u1EF1ng h\u1ECD parser cho \u0111\u1ED1i t\u00E1c Taiwan (TW) / Ch\u00E2u \u00C1\n
+comment1.params=xml
+comment1.target=java.lang.String parseOrderXML(java.lang.String)
+comment2.target=java.lang.String getFactoryRegion()
+comment3.target=OrderXMLParser createOrderParser()
+comment4.target=FeedbackXMLParser createFeedbackParser()
+comment5.target=ShippingXMLParser createShippingParser()
+numComments=6
