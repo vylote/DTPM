@@ -1,0 +1,7 @@
+#BlueJ class context
+#Wed Nov 11 10:29:31 ICT 2026
+comment0.target=MoMoPayable
+comment0.text=\n Giao di\u1EC7n m\u1EDBi m\u00E0 \u0111\u1ED1i t\u00E1c / kh\u00E1ch h\u00E0ng y\u00EAu c\u1EA7u t\u00EDch h\u1EE3p\: V\u00ED \u0111i\u1EC7n t\u1EED MoMo.\n
+comment1.params=amountInVnd
+comment1.target=void processMoMoPayment(double)
+numComments=2
