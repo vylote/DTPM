@@ -100,12 +100,13 @@
 ---
 
 ### 4. BUILDER PATTERN (`VinFastCar.java`, `CarBuilder.java`)
-* **Bài toán:** Cấu hình xe ô tô điện VinFast với 10 tùy chọn phức tạp (model, động cơ, pin, màu sắc, ghế Nappa, cửa sổ trời, ADAS, giá...).
+* **Bản chất:** Xây dựng một đối tượng phức tạp từng bước một (step-by-step) bằng cách tách rời quy trình lắp ráp ra khỏi đối tượng thực tế.
+* **Bài toán:** Cấu hình xe ô tô điện VinFast với 10 tùy chọn phức tạp (model, động cơ, pin, màu sắc, ghế Nappa, cửa sổ trời, ADAS, giá...). Thay vì gọi constructor dài ngoằng hoặc setter nguy hiểm, ta dùng Builder tự quản lý, có sẵn thông số mặc định, thích cấu hình trường nào thì gọi hàm đó, cuối cùng bấm `.build()` để ra xe hoàn chỉnh.
 
 ---
 
 #### ❓ Câu 1: Builder giải quyết vấn đề gì? Tại sao không dùng constructor dài hay Setter?
-* **Telescoping Constructor (Kính thiên văn):** Constructor 10 tham số rất dễ truyền nhầm thứ tự các biến cùng kiểu (`boolean`, `String`), code rối và khó đọc.
+* **Hội chứng Telescoping Constructor (Kính thiên văn):** Constructor 10 tham số rất dễ truyền nhầm thứ tự các biến cùng kiểu (`boolean`, `String`), code rối và khó đọc.
 * **Tại sao không dùng Setter?**
   * Setter làm đối tượng rơi vào trạng thái không toàn vẹn (inconsistent state) khi đang set dở.
   * Khiến đối tượng bị thay đổi được (Mutable), không an toàn đa luồng.
@@ -120,6 +121,22 @@
 
 #### ❓ Câu 3: Vai trò của `VinFastDirector` là gì?
 * **Đáp:** Đóng vai trò như bảng cấu hình mẫu sẵn của hãng (VF8 Plus, VF9 Executive). Khách hàng thích tùy biến cá nhân (Custom Order) thì tự gọi builder trực tiếp mà không cần qua Director.
+
+---
+
+#### ❓ Câu 4: Tại sao việc kiểm tra hợp lệ (Validation) phải đặt ở hàm `build()` mà không đặt ở từng hàm `set...()`?
+* **Đáp:** Vì nhiều logic nghiệp vụ cần kiểm tra mối quan hệ chéo giữa các thuộc tính (ví dụ: *Xe có cửa sổ trời thì bắt buộc phải từ 5 chỗ trở lên*). Nếu validate ở setter, tại thời điểm gọi có thể thuộc tính kia chưa được set. Đặt ở `build()` đảm bảo gom đủ mọi linh kiện rồi mới kiểm tra tổng thể trước khi tạo đối tượng thật.
+
+---
+
+#### ❓ Câu 5: Tại sao constructor của `VinFastCar` để package-private chứ không để `public`?
+* **Đáp:** Để ngăn chặn lập trình viên "đi đường tắt" (cố tình gọi `new VinFastCar(...)` 10 tham số). Ép buộc 100% việc tạo xe đều phải thông qua `CarBuilder`.
+
+---
+
+#### ❓ Câu 6: GoF Builder (bài này) khác gì Lombok `@Builder` trong Spring Boot?
+* **GoF Builder:** Tách riêng Interface `Builder` và `Director`. Dùng cùng một quy trình lắp ráp nhưng có thể tạo ra nhiều biểu diễn khác nhau (ví dụ: vừa ráp xe thật `VinFastCar`, vừa ráp sách hướng dẫn `CarManual`).
+* **Lombok `@Builder` (Effective Java):** Chỉ là một static class lồng bên trong Product, không có interface hay Director, mục đích thuần túy là viết code gọn trong backend hàng ngày.
 
 ---
 
