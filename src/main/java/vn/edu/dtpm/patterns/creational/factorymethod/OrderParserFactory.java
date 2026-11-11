@@ -18,24 +18,3 @@ public abstract class OrderParserFactory {
         System.out.println("[OrderParserFactory] Đã lưu thông tin đơn hàng vào hệ thống kế toán thành công!");
     }
 }
-
-/**
- * Concrete Creator 1: Factory tạo Tiki Parser
- */
-class TikiOrderParserFactory extends OrderParserFactory {
-    @Override
-    public OrderParser createParser() {
-        return new TikiOrderParser();
-    }
-}
-
-/**
- * Concrete Creator 2: Factory tạo Shopee Parser
- */
-class ShopeeOrderParserFactory extends OrderParserFactory {
-    @Override
-    public OrderParser createParser() {
-        return new ShopeeOrderParser();
-    }
-}
-

@@ -1,0 +1,23 @@
+#BlueJ class context
+#Wed Nov 11 10:18:15 ICT 2026
+comment0.target=AccessControl
+comment0.text=\n Prototype\: C\u1EA5u h\u00ECnh ph\u00E2n quy\u1EC1n truy c\u1EADp h\u1EC7 th\u1ED1ng FPT Corporation.\n C\u00E0i \u0111\u1EB7t c\u01A1 ch\u1EBF Deep Clone \u0111\u1EC3 \u0111\u1EA3m b\u1EA3o t\u00EDnh \u0111\u1ED9c l\u1EADp gi\u1EEFa c\u00E1c phi\u00EAn b\u1EA3n nh\u00E2n b\u1EA3n.\n
+comment1.params=roleName assignedUser department permissions
+comment1.target=AccessControl(java.lang.String, java.lang.String, java.lang.String, java.util.List)
+comment10.params=permission
+comment10.target=void revokePermission(java.lang.String)
+comment11.target=AccessControl clone()
+comment12.target=java.lang.String toString()
+comment2.target=java.lang.String getRoleName()
+comment3.params=roleName
+comment3.target=void setRoleName(java.lang.String)
+comment4.target=java.lang.String getAssignedUser()
+comment5.params=assignedUser
+comment5.target=void setAssignedUser(java.lang.String)
+comment6.target=java.lang.String getDepartment()
+comment7.params=department
+comment7.target=void setDepartment(java.lang.String)
+comment8.target=java.util.List getPermissions()
+comment9.params=permission
+comment9.target=void addPermission(java.lang.String)
+numComments=13

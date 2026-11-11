@@ -1,0 +1,7 @@
+#BlueJ class context
+#Wed Nov 11 10:09:26 ICT 2026
+comment0.target=FeedbackXMLParser
+comment0.text=\n Giao di\u1EC7n Product B\: Parser ph\u1EA3n h\u1ED3i / \u0111\u00E1nh gi\u00E1 kh\u00E1ch h\u00E0ng qu\u1ED1c t\u1EBF.\n
+comment1.params=xml
+comment1.target=java.lang.String parseFeedbackXML(java.lang.String)
+numComments=2

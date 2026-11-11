@@ -1,0 +1,16 @@
+#BlueJ class context
+#Wed Nov 11 09:53:28 ICT 2026
+comment0.target=DatabaseConnection
+comment0.text=\n M\u1EABu thi\u1EBFt k\u1EBF Singleton (Creational Pattern)\n B\u00E0i to\u00E1n\: Qu\u1EA3n l\u00FD k\u1EBFt n\u1ED1i C\u01A1 s\u1EDF d\u1EEF li\u1EC7u duy nh\u1EA5t cho \u1EE9ng d\u1EE5ng ng\u00E2n h\u00E0ng / th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED Vi\u1EC7t Nam.\n C\u00E0i \u0111\u1EB7t theo ph\u01B0\u01A1ng ph\u00E1p Bill Pugh Singleton (Initialization-on-demand holder idiom)\n \u0111\u1EA3m b\u1EA3o Thread-safe v\u00E0 hi\u1EC7u n\u0103ng cao (Lazy loading).\n
+comment1.target=DatabaseConnection()
+comment2.target=DatabaseConnection getInstance()
+comment3.params=sql
+comment3.target=void executeQuery(java.lang.String)
+comment4.params=sql
+comment4.target=void executeUpdate(java.lang.String)
+comment5.target=void disconnect()
+comment6.target=void reconnect()
+comment7.target=java.util.List getExecutionLogs()
+comment8.target=java.lang.String getDbUrl()
+comment9.target=boolean isConnected()
+numComments=10

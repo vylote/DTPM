@@ -1,0 +1,7 @@
+#BlueJ class context
+#Wed Nov 11 10:09:26 ICT 2026
+comment0.target=OrderXMLParser
+comment0.text=\n Giao di\u1EC7n Product A\: Parser \u0111\u01A1n h\u00E0ng qu\u1ED1c t\u1EBF.\n
+comment1.params=xml
+comment1.target=java.lang.String parseOrderXML(java.lang.String)
+numComments=2

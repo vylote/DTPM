@@ -1,0 +1,9 @@
+#BlueJ class context
+#Wed Nov 11 10:09:26 ICT 2026
+comment0.target=XMLParserFactory
+comment0.text=\n Giao di\u1EC7n Abstract Factory\: T\u1EA1o h\u1ECD c\u00E1c Parser t\u01B0\u01A1ng th\u00EDch theo t\u1EEBng \u0111\u1ED1i t\u00E1c / chi nh\u00E1nh.\n
+comment1.target=OrderXMLParser createOrderParser()
+comment2.target=FeedbackXMLParser createFeedbackParser()
+comment3.target=java.lang.String getFactoryRegion()
+comment4.target=ShippingXMLParser createShippingParser()
+numComments=5

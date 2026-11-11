@@ -98,4 +98,50 @@
   * Khi interface gốc `XMLParserFactory` thay đổi (ví dụ thêm `createShippingParser()`), **toàn bộ các factory con (`NYXmlParserFactory`, `TWXmlParserFactory`...) đều bị lỗi biên dịch** và bắt buộc phải viết thêm code (vi phạm Open/Closed Principle khi mở rộng chủng loại sản phẩm).
 
 ---
+
+### 4. BUILDER PATTERN (`VinFastCar.java`, `CarBuilder.java`)
+* **Bài toán:** Cấu hình xe ô tô điện VinFast với 10 tùy chọn phức tạp (model, động cơ, pin, màu sắc, ghế Nappa, cửa sổ trời, ADAS, giá...).
+
+---
+
+#### ❓ Câu 1: Builder giải quyết vấn đề gì? Tại sao không dùng constructor dài hay Setter?
+* **Telescoping Constructor (Kính thiên văn):** Constructor 10 tham số rất dễ truyền nhầm thứ tự các biến cùng kiểu (`boolean`, `String`), code rối và khó đọc.
+* **Tại sao không dùng Setter?**
+  * Setter làm đối tượng rơi vào trạng thái không toàn vẹn (inconsistent state) khi đang set dở.
+  * Khiến đối tượng bị thay đổi được (Mutable), không an toàn đa luồng.
+  * Builder cho phép toàn bộ 10 thuộc tính của `VinFastCar` đều là **`final` (Immutable)**.
+
+---
+
+#### ❓ Câu 2: Lệnh `return this` trong Builder có tác dụng gì?
+* **Đáp:** Cho phép viết mã theo phong cách **Fluent Interface (Method Chaining)**: `.setModel(...).setColor(...).build()`. Mỗi hàm trả về chính đối tượng builder (`this`) để chấm nối đuôi nhau liên tục.
+
+---
+
+#### ❓ Câu 3: Vai trò của `VinFastDirector` là gì?
+* **Đáp:** Đóng vai trò như bảng cấu hình mẫu sẵn của hãng (VF8 Plus, VF9 Executive). Khách hàng thích tùy biến cá nhân (Custom Order) thì tự gọi builder trực tiếp mà không cần qua Director.
+
+---
+
+### 5. PROTOTYPE PATTERN (`AccessControl.java`, `AccessControlRegistry.java`)
+* **Bài toán:** Nhân bản cấu hình phân quyền nhân viên FPT Corporation từ các mẫu chuẩn định sẵn (Admin, Dev, PM) để tiết kiệm tài nguyên khởi tạo.
+
+---
+
+#### ❓ Câu 1: Phân biệt Shallow Copy và Deep Copy? Nếu làm sai sẽ nguy hiểm thế nào?
+* **Shallow Copy (`super.clone()` mặc định):** Chỉ sao chép biến nguyên thủy và `String`. Với `List<String> permissions`, nó chỉ sao chép địa chỉ con trỏ $\rightarrow$ Cả bản sao và bản gốc đều trỏ chung vào 1 danh sách. Nếu cấp thêm quyền cho bản sao, bản mẫu gốc cũng bị gán thêm quyền đó theo (lỗi bảo mật nghiêm trọng).
+* **Deep Copy (Trong code của chúng ta):** `cloned.permissions = new ArrayList<>(this.permissions);` $\rightarrow$ Cấp phát vùng nhớ `List` hoàn toàn độc lập trên Heap.
+
+---
+
+#### ❓ Câu 2: Interface `Cloneable` trong Java có gì đặc biệt?
+* **Đáp:** Là một **Marker Interface (Giao diện rỗng)** không có bất kỳ hàm nào.
+* Phương thức `clone()` thực chất thuộc về lớp `java.lang.Object`. Việc implement `Cloneable` đóng vai trò như "tấm vé thông hành" cho phép JVM gọi `super.clone()`. Nếu không implement mà gọi `super.clone()`, JVM sẽ ném lỗi `CloneNotSupportedException`.
+
+---
+
+#### ❓ Câu 3: Vai trò của `AccessControlRegistry` là gì?
+* **Đáp:** Là một **Prototype Cache**: Lưu sẵn một bảng băm `Map<String, AccessControl>` chứa các mẫu chuẩn. Client chỉ cần xin quyền theo tên mẫu (`DEV_TEMPLATE`), Registry tự động gọi `.clone()` và trả về bản sao độc lập mà client không cần biết logic nhân bản bên dưới.
+
+---
 *(Sẽ tiếp tục bổ sung ngắn gọn cho các pattern tiếp theo...)*

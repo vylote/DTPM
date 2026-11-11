@@ -1,0 +1,7 @@
+#BlueJ class context
+#Wed Nov 11 10:09:26 ICT 2026
+comment0.target=TWOrderXMLParser
+comment0.text=\n Concrete Product A2\: TW (Taiwan / \u0110\u1ED1i t\u00E1c Ch\u00E2u \u00C1 - \u0110\u00E0i Loan / H\u00E0n Qu\u1ED1c) Order Parser\n
+comment1.params=xml
+comment1.target=java.lang.String parseOrderXML(java.lang.String)
+numComments=2

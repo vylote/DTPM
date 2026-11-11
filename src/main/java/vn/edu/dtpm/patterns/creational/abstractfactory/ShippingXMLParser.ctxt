@@ -1,0 +1,6 @@
+#BlueJ class context
+#Wed Nov 11 10:09:26 ICT 2026
+comment0.target=ShippingXMLParser
+comment1.params=xml
+comment1.target=java.lang.String parseShippingXML(java.lang.String)
+numComments=2

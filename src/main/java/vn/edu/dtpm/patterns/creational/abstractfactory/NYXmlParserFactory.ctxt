@@ -1,11 +1,9 @@
 #BlueJ class context
-#Wed Nov 11 09:12:35 ICT 2026
+#Wed Nov 11 10:11:11 ICT 2026
 comment0.target=NYXmlParserFactory
 comment0.text=\n Concrete Factory 1\: X\u00E2y d\u1EF1ng h\u1ECD parser cho \u0111\u1ED1i t\u00E1c New York (NY)\n
-comment1.params=xml
-comment1.target=java.lang.String parseOrderXML(java.lang.String)
-comment2.target=java.lang.String getFactoryRegion()
-comment3.target=OrderXMLParser createOrderParser()
-comment4.target=FeedbackXMLParser createFeedbackParser()
-comment5.target=ShippingXMLParser createShippingParser()
-numComments=6
+comment1.target=java.lang.String getFactoryRegion()
+comment2.target=OrderXMLParser createOrderParser()
+comment3.target=FeedbackXMLParser createFeedbackParser()
+comment4.target=ShippingXMLParser createShippingParser()
+numComments=5
